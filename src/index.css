@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-skwap-primary;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-skwap-accent text-white font-semibold rounded-2xl transition-all duration-200 active:scale-95;
+  }
+
+  .btn-primary:hover {
+    @apply shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-skwap-accent-light text-skwap-accent font-semibold rounded-2xl transition-all duration-200 active:scale-95;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-opacity-70;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 p-4;
+  }
+
+  .card-interactive {
+    @apply card transition-all duration-200 hover:shadow-md active:shadow-sm;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 text-skwap-primary placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-skwap-accent focus:border-transparent;
+  }
+
+  .heading-lg {
+    @apply text-3xl font-bold text-skwap-primary;
+  }
+
+  .heading-md {
+    @apply text-2xl font-bold text-skwap-primary;
+  }
+
+  .heading-sm {
+    @apply text-lg font-semibold text-skwap-primary;
+  }
+
+  .text-secondary {
+    @apply text-gray-600;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-accent {
+    @apply badge bg-skwap-accent-light text-skwap-accent;
+  }
+
+  .badge-success {
+    @apply badge bg-green-100 text-green-700;
+  }
+}
