@@ -72,15 +72,15 @@ export default function Homepage({ onNavigate }: HomepageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-white pb-24">
+    <div className="min-h-screen bg-slate-900 pb-24">
       {/* Header with greeting and notification */}
       <div className="px-4 pt-4 pb-6">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <p className="text-text-secondary text-sm font-medium">Welcome back</p>
+            <p className="text-slate-400 text-sm font-medium">Welcome back</p>
             <h1 className="heading-lg mt-1">Hello, Student!</h1>
           </div>
-          <button className="relative flex items-center justify-center w-12 h-12 rounded-2xl bg-skwap-accent-light hover:bg-opacity-80 transition-all">
+          <button className="relative flex items-center justify-center w-12 h-12 rounded-2xl bg-slate-800 hover:bg-slate-700 transition-all border border-slate-700">
             <Bell size={22} className="text-skwap-accent" />
             <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full" />
           </button>
@@ -90,7 +90,7 @@ export default function Homepage({ onNavigate }: HomepageProps) {
         <div className="relative">
           <Search
             size={18}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"
           />
           <input
             type="text"
@@ -109,7 +109,7 @@ export default function Homepage({ onNavigate }: HomepageProps) {
           className="w-full card-interactive bg-gradient-to-r from-skwap-accent to-cyan-500 p-5 flex items-center justify-between group"
         >
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-white bg-opacity-20 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl bg-slate-900 bg-opacity-40 flex items-center justify-center">
               <Flame size={24} className="text-white" />
             </div>
             <div className="text-left">
@@ -152,8 +152,8 @@ export default function Homepage({ onNavigate }: HomepageProps) {
                 onClick={() => setSelectedCategory(category)}
                 className={`flex-shrink-0 px-4 py-2 rounded-full font-semibold text-sm transition-all duration-200 whitespace-nowrap ${
                   selectedCategory === category
-                    ? 'bg-skwap-accent text-white shadow-md'
-                    : 'bg-skwap-accent-light text-skwap-accent hover:bg-opacity-80'
+                    ? 'bg-skwap-accent text-slate-900 shadow-md shadow-cyan-500/50'
+                    : 'bg-slate-800 text-skwap-accent hover:bg-slate-700 border border-slate-700'
                 }`}
               >
                 {category}
@@ -164,15 +164,15 @@ export default function Homepage({ onNavigate }: HomepageProps) {
           {/* Scroll indicators (hidden on mobile in production, kept for UI clarity) */}
           <button
             onClick={() => handleCategoryScroll('left')}
-            className="absolute -left-2 top-1/2 -translate-y-1/2 z-10 hidden sm:flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-md border border-gray-200"
+            className="absolute -left-2 top-1/2 -translate-y-1/2 z-10 hidden sm:flex items-center justify-center w-8 h-8 rounded-full bg-slate-800 shadow-md border border-slate-700"
           >
-            <ChevronRight size={16} className="rotate-180 text-skwap-primary" />
+            <ChevronRight size={16} className="rotate-180 text-slate-50" />
           </button>
           <button
             onClick={() => handleCategoryScroll('right')}
-            className="absolute -right-2 top-1/2 -translate-y-1/2 z-10 hidden sm:flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-md border border-gray-200"
+            className="absolute -right-2 top-1/2 -translate-y-1/2 z-10 hidden sm:flex items-center justify-center w-8 h-8 rounded-full bg-slate-800 shadow-md border border-slate-700"
           >
-            <ChevronRight size={16} className="text-skwap-primary" />
+            <ChevronRight size={16} className="text-slate-50" />
           </button>
         </div>
       </div>
@@ -196,20 +196,20 @@ export default function Homepage({ onNavigate }: HomepageProps) {
                 <img
                   src={user.avatar}
                   alt={user.name}
-                  className="w-14 h-14 rounded-full object-cover flex-shrink-0"
+                  className="w-14 h-14 rounded-full object-cover flex-shrink-0 ring-2 ring-slate-700"
                 />
 
                 {/* User info */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-skwap-primary truncate">
+                  <h3 className="font-semibold text-slate-50 truncate">
                     {user.name}
                   </h3>
-                  <p className="text-sm text-text-secondary truncate mb-1">
+                  <p className="text-sm text-slate-400 truncate mb-1">
                     {user.skillOffering}
                   </p>
                   <div className="flex items-center gap-1">
                     <span className="text-yellow-500 font-semibold text-sm">★</span>
-                    <span className="text-xs font-semibold text-skwap-primary">
+                    <span className="text-xs font-semibold text-slate-50">
                       {user.rating}
                     </span>
                   </div>
@@ -230,11 +230,11 @@ export default function Homepage({ onNavigate }: HomepageProps) {
         <div className="grid grid-cols-2 gap-3">
           <div className="card text-center py-4">
             <p className="text-3xl font-bold text-skwap-accent mb-1">128</p>
-            <p className="text-xs text-text-secondary font-semibold">Skills Available</p>
+            <p className="text-xs text-slate-400 font-semibold">Skills Available</p>
           </div>
           <div className="card text-center py-4">
             <p className="text-3xl font-bold text-skwap-accent mb-1">2.4K</p>
-            <p className="text-xs text-text-secondary font-semibold">Active Students</p>
+            <p className="text-xs text-slate-400 font-semibold">Active Students</p>
           </div>
         </div>
       </div>

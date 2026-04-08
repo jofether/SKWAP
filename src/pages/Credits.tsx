@@ -90,14 +90,14 @@ export default function Credits({ onNavigate }: CreditsProps) {
   }
 
   return (
-    <div className="min-h-screen bg-white pb-24">
+    <div className="min-h-screen bg-slate-900 pb-24">
       {/* Header */}
-      <div className="sticky top-0 bg-white z-10 py-4 px-4 border-b border-gray-100 flex items-center gap-3">
+      <div className="sticky top-0 bg-slate-800 z-10 py-4 px-4 border-b border-slate-700 flex items-center gap-3">
         <button 
           onClick={() => onNavigate?.('home')}
-          className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-50"
+          className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-700"
         >
-          <ArrowLeft size={20} className="text-skwap-primary" />
+          <ArrowLeft size={20} className="text-slate-50" />
         </button>
         <h1 className="heading-md">My Skwap Credits</h1>
       </div>
@@ -137,7 +137,7 @@ export default function Credits({ onNavigate }: CreditsProps) {
           {/* Offer a Skill to Earn - Outlined */}
           <button
             onClick={handleOfferSkill}
-            className="flex-1 py-3 px-4 rounded-2xl border-2 border-skwap-accent text-skwap-accent font-semibold transition-all duration-200 hover:bg-skwap-accent-light active:scale-95 flex items-center justify-center gap-2"
+            className="flex-1 py-3 px-4 rounded-2xl border-2 border-skwap-accent text-skwap-accent font-semibold transition-all duration-200 hover:bg-cyan-500 hover:text-slate-900 active:scale-95 flex items-center justify-center gap-2"
           >
             <TrendingUp size={18} />
             <span>Offer a Skill</span>
@@ -168,10 +168,10 @@ export default function Credits({ onNavigate }: CreditsProps) {
 
                 {/* Transaction details */}
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-skwap-primary truncate">
+                  <p className="font-semibold text-slate-50 truncate">
                     {transaction.description}
                   </p>
-                  <p className="text-xs text-text-secondary">
+                  <p className="text-xs text-slate-400">
                     {transaction.timestamp}
                   </p>
                 </div>
@@ -195,7 +195,7 @@ export default function Credits({ onNavigate }: CreditsProps) {
           </div>
 
           {/* Load more button */}
-          <button className="w-full mt-4 py-3 rounded-2xl border border-gray-200 text-skwap-primary font-semibold hover:bg-gray-50 transition-all duration-200">
+          <button className="w-full mt-4 py-3 rounded-2xl border border-slate-700 text-slate-50 font-semibold hover:bg-slate-800 transition-all duration-200">
             Load More
           </button>
         </div>

@@ -86,7 +86,7 @@ export default function Matching({ onNavigate: _onNavigate }: MatchingProps) {
 
   if (!currentMatch) {
     return (
-      <div className="min-h-screen bg-white flex flex-col items-center justify-center pb-24 px-4">
+      <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center pb-24 px-4">
         <div className="text-center">
           <div className="w-20 h-20 rounded-full bg-skwap-accent-light flex items-center justify-center mb-4 mx-auto">
             <Flame size={40} className="text-skwap-accent" />
@@ -104,12 +104,12 @@ export default function Matching({ onNavigate: _onNavigate }: MatchingProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-white to-skwap-accent-light flex flex-col pb-24">
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 flex flex-col pb-24">
       {/* Header */}
-      <div className="sticky top-0 bg-white/80 backdrop-blur-sm z-10 py-4 px-4 border-b border-gray-100">
+      <div className="sticky top-0 bg-slate-800/80 backdrop-blur-sm z-10 py-4 px-4 border-b border-slate-700">
         <div className="flex items-center justify-between">
-          <h1 className="heading-md">New Match!</h1>
-          <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-skwap-accent-light">
+          <h1 className="heading-md text-slate-50">New Match!</h1>
+          <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-cyan-900/30 border border-slate-700">
             <Flame size={16} className="text-skwap-accent" />
             <span className="text-sm font-semibold text-skwap-accent">
               {currentIndex + 1}/{matches.length}
@@ -126,18 +126,18 @@ export default function Matching({ onNavigate: _onNavigate }: MatchingProps) {
           }`}
         >
           {/* Profile Card */}
-          <div className="card bg-white rounded-3xl shadow-xl overflow-hidden">
+          <div className="card bg-slate-800 rounded-3xl shadow-xl overflow-hidden">
             {/* Profile Picture */}
-            <div className="relative w-full h-64 bg-gradient-to-br from-skwap-accent-light to-cyan-100 flex items-center justify-center overflow-hidden">
+            <div className="relative w-full h-64 bg-gradient-to-br from-slate-700 to-slate-600 flex items-center justify-center overflow-hidden">
               <img
                 src={currentMatch.avatar}
                 alt={currentMatch.name}
                 className="w-full h-full object-cover"
               />
               {/* Synergy badge */}
-              <div className="absolute top-4 right-4 bg-white rounded-full shadow-lg px-4 py-2 flex items-center gap-2">
+              <div className="absolute top-4 right-4 bg-slate-900 border border-slate-700 rounded-full shadow-lg px-4 py-2 flex items-center gap-2">
                 <Flame size={18} className="text-orange-500" />
-                <span className="font-bold text-skwap-primary">
+                <span className="font-bold text-slate-50">
                   {currentMatch.synergy}%
                 </span>
               </div>
@@ -147,58 +147,58 @@ export default function Matching({ onNavigate: _onNavigate }: MatchingProps) {
             <div className="p-5">
               {/* Name and Major */}
               <div className="mb-4">
-                <h2 className="heading-sm mb-1">{currentMatch.name}</h2>
-                <p className="text-sm text-text-secondary font-medium">
+                <h2 className="heading-sm mb-1 text-slate-50">{currentMatch.name}</h2>
+                <p className="text-sm text-slate-400 font-medium">
                   📚 {currentMatch.major}
                 </p>
-                <p className="text-sm text-text-secondary mt-2 leading-relaxed">
+                <p className="text-sm text-slate-400 mt-2 leading-relaxed">
                   {currentMatch.bio}
                 </p>
               </div>
 
               {/* Divider */}
-              <div className="h-px bg-gray-200 my-4" />
+              <div className="h-px bg-slate-700 my-4" />
 
               {/* Skills sections */}
               <div className="space-y-4">
                 {/* Offering */}
-                <div className="bg-skwap-accent-light rounded-2xl p-4">
-                  <p className="text-xs font-semibold text-text-secondary uppercase tracking-wide mb-2">
+                <div className="bg-cyan-900/30 border border-slate-700 rounded-2xl p-4">
+                  <p className="text-xs font-semibold text-cyan-400 uppercase tracking-wide mb-2">
                     ✨ Offering
                   </p>
-                  <p className="font-bold text-skwap-primary text-lg">
+                  <p className="font-bold text-slate-50 text-lg">
                     {currentMatch.offering}
                   </p>
                 </div>
 
                 {/* Looking For */}
-                <div className="bg-green-50 rounded-2xl p-4 border border-green-200">
-                  <p className="text-xs font-semibold text-green-700 uppercase tracking-wide mb-2">
+                <div className="bg-green-900/30 border border-green-800 rounded-2xl p-4">
+                  <p className="text-xs font-semibold text-green-400 uppercase tracking-wide mb-2">
                     🎯 Looking For
                   </p>
-                  <p className="font-bold text-green-700 text-lg">
+                  <p className="font-bold text-green-400 text-lg">
                     {currentMatch.lookingFor}
                   </p>
                 </div>
               </div>
 
               {/* Match Synergy Info */}
-              <div className="mt-4 pt-4 border-t border-gray-200">
+              <div className="mt-4 pt-4 border-t border-slate-700">
                 <div className="flex items-center justify-between mb-2">
-                  <p className="text-xs font-semibold text-text-secondary">
+                  <p className="text-xs font-semibold text-slate-400">
                     Match Synergy
                   </p>
                   <p className="text-xs font-bold text-skwap-accent">
                     {currentMatch.synergy}% Compatible
                   </p>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                <div className="w-full bg-slate-700 rounded-full h-2 overflow-hidden">
                   <div
                     className="bg-gradient-to-r from-skwap-accent to-cyan-500 h-full rounded-full transition-all duration-500"
                     style={{ width: `${currentMatch.synergy}%` }}
                   />
                 </div>
-                <p className="text-xs text-text-secondary mt-2">
+                <p className="text-xs text-slate-400 mt-2">
                   Your skills align great with {currentMatch.name.split(' ')[0]}'s needs!
                 </p>
               </div>
