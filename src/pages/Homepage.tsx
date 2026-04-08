@@ -228,10 +228,10 @@ export default function Homepage({ onNavigate }: HomepageProps) {
       {/* Quick stats section */}
       <div className="px-4 mt-8 mb-4">
         <div className="grid grid-cols-2 gap-3">
-          <div className="card text-center py-4">
+          <button onClick={() => onNavigate?.('credits')} className="card-interactive text-center py-4">
             <p className="text-3xl font-bold text-skwap-accent mb-1">128</p>
             <p className="text-xs text-slate-400 font-semibold">Skills Available</p>
-          </div>
+          </button>
           <div className="card text-center py-4">
             <p className="text-3xl font-bold text-skwap-accent mb-1">2.4K</p>
             <p className="text-xs text-slate-400 font-semibold">Active Students</p>

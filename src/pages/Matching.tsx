@@ -51,7 +51,7 @@ const mockMatches: MatchProfile[] = [
   },
 ]
 
-export default function Matching({ onNavigate: _onNavigate }: MatchingProps) {
+export default function Matching({ onNavigate }: MatchingProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [matches, setMatches] = useState(mockMatches)
   const [isAnimating, setIsAnimating] = useState(false)
@@ -95,7 +95,7 @@ export default function Matching({ onNavigate: _onNavigate }: MatchingProps) {
           <p className="text-text-secondary mb-6">
             Come back later to find more skill-swap partners!
           </p>
-          <button className="btn-primary">
+          <button onClick={() => onNavigate?.('home')} className="btn-primary">
             Back to Home
           </button>
         </div>
