@@ -12,8 +12,8 @@ interface MatchProfile {
   name: string
   major: string
   avatar: string
-  offering: string
-  lookingFor: string
+  offering: string[]
+  lookingFor: string[]
   synergy: number
   bio: string
 }
@@ -24,8 +24,8 @@ const mockMatches: MatchProfile[] = [
     name: 'Emma Rodriguez',
     major: 'Computer Science',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Emma',
-    offering: 'Advanced Python Scripting',
-    lookingFor: 'Figma Mockups for Prototype',
+    offering: ['Advanced Python Scripting', 'Data Processing', 'API Integration'],
+    lookingFor: ['Figma UI Mockups', 'Prototype Design', 'Design Systems'],
     synergy: 95,
     bio: 'Final year CS student working on thesis project',
   },
@@ -34,8 +34,8 @@ const mockMatches: MatchProfile[] = [
     name: 'David Chen',
     major: 'Information Technology',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=David',
-    offering: 'Information Assurance & Security',
-    lookingFor: 'ReactJS Fundamentals',
+    offering: ['Information Assurance Concepts', 'Cybersecurity Fundamentals', 'Network Security'],
+    lookingFor: ['ReactJS Fundamentals', 'Component Design Patterns', 'State Management'],
     synergy: 82,
     bio: 'Security specialist helping peers with cybersecurity concepts',
   },
@@ -44,8 +44,8 @@ const mockMatches: MatchProfile[] = [
     name: 'Sophie Dupont',
     major: 'Graphic Design',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sophie',
-    offering: 'Poster & UI Design',
-    lookingFor: 'Social Issues Course Reviewer',
+    offering: ['Poster & UI Design', 'Visual Storytelling', 'Brand Identity Design'],
+    lookingFor: ['Course Content Review', 'Social Research Methods', 'Academic Writing'],
     synergy: 88,
     bio: 'Creative designer passionate about impactful visual communication',
   },
@@ -127,27 +127,30 @@ export default function Matching({ onNavigate }: MatchingProps) {
         >
           {/* Profile Card */}
           <div className="card bg-slate-800 rounded-3xl shadow-xl overflow-hidden">
-            {/* Profile Picture */}
-            <div className="relative w-full h-64 bg-gradient-to-br from-slate-700 to-slate-600 flex items-center justify-center overflow-hidden">
+            {/* Card Header with Subtle Background */}
+            <div className="h-20 bg-gradient-to-br from-slate-700 to-slate-800" />
+
+            {/* Centered Circular Avatar overlapping header */}
+            <div className="flex justify-center -mt-16 relative z-10 mb-4">
               <img
                 src={currentMatch.avatar}
                 alt={currentMatch.name}
-                className="w-full h-full object-cover"
+                className="w-32 h-32 rounded-full object-cover border-4 border-slate-800 shadow-lg"
               />
               {/* Synergy badge */}
-              <div className="absolute top-4 right-4 bg-slate-900 border border-slate-700 rounded-full shadow-lg px-4 py-2 flex items-center gap-2">
-                <Flame size={18} className="text-orange-500" />
-                <span className="font-bold text-slate-50">
+              <div className="absolute -bottom-2 -right-2 bg-slate-900 border-2 border-slate-700 rounded-full shadow-lg px-3 py-1 flex items-center gap-1">
+                <Flame size={14} className="text-orange-500" />
+                <span className="font-bold text-slate-50 text-xs">
                   {currentMatch.synergy}%
                 </span>
               </div>
             </div>
 
             {/* Profile Info */}
-            <div className="p-5">
+            <div className="px-5 pb-5">
               {/* Name and Major */}
-              <div className="mb-4">
-                <h2 className="heading-sm mb-1 text-slate-50">{currentMatch.name}</h2>
+              <div className="text-center mb-4">
+                <h2 className="heading-sm text-slate-50">{currentMatch.name}</h2>
                 <p className="text-sm text-slate-400 font-medium">
                   📚 {currentMatch.major}
                 </p>
@@ -163,22 +166,30 @@ export default function Matching({ onNavigate }: MatchingProps) {
               <div className="space-y-4">
                 {/* Offering */}
                 <div className="bg-cyan-900/30 border border-slate-700 rounded-2xl p-4">
-                  <p className="text-xs font-semibold text-cyan-400 uppercase tracking-wide mb-2">
+                  <p className="text-xs font-semibold text-cyan-400 uppercase tracking-wide mb-3">
                     ✨ Offering
                   </p>
-                  <p className="font-bold text-slate-50 text-lg">
-                    {currentMatch.offering}
-                  </p>
+                  <ul className="list-disc pl-5 space-y-1">
+                    {currentMatch.offering.map((skill, index) => (
+                      <li key={index} className="text-slate-50 text-sm">
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 {/* Looking For */}
                 <div className="bg-green-900/30 border border-green-800 rounded-2xl p-4">
-                  <p className="text-xs font-semibold text-green-400 uppercase tracking-wide mb-2">
+                  <p className="text-xs font-semibold text-green-400 uppercase tracking-wide mb-3">
                     🎯 Looking For
                   </p>
-                  <p className="font-bold text-green-400 text-lg">
-                    {currentMatch.lookingFor}
-                  </p>
+                  <ul className="list-disc pl-5 space-y-1">
+                    {currentMatch.lookingFor.map((skill, index) => (
+                      <li key={index} className="text-green-400 text-sm">
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
 
