@@ -13,16 +13,17 @@ interface RecommendedUser {
   avatar: string
   skillOffering: string
   rating: number
+  ratingCount: number
 }
 
 const mockCategories = [
-  'Programming',
-  'Academics',
-  'Design',
-  'Languages',
-  'Music',
-  'Writing',
-  'Business',
+  { name: 'Programming', icon: '💻' },
+  { name: 'Academics', icon: '📚' },
+  { name: 'Design', icon: '🎨' },
+  { name: 'Languages', icon: '🗣️' },
+  { name: 'Music', icon: '🎵' },
+  { name: 'Writing', icon: '✍️' },
+  { name: 'Business', icon: '💼' },
 ]
 
 const mockRecommendedUsers: RecommendedUser[] = [
@@ -32,6 +33,7 @@ const mockRecommendedUsers: RecommendedUser[] = [
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah',
     skillOffering: 'Python & Data Processing',
     rating: 4.8,
+    ratingCount: 56,
   },
   {
     id: '2',
@@ -39,6 +41,7 @@ const mockRecommendedUsers: RecommendedUser[] = [
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex',
     skillOffering: 'Information Assurance Tutoring',
     rating: 4.9,
+    ratingCount: 128,
   },
   {
     id: '3',
@@ -46,6 +49,7 @@ const mockRecommendedUsers: RecommendedUser[] = [
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jamie',
     skillOffering: 'UI/UX Thesis Help',
     rating: 4.7,
+    ratingCount: 42,
   },
   {
     id: '4',
@@ -53,6 +57,7 @@ const mockRecommendedUsers: RecommendedUser[] = [
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus',
     skillOffering: 'React Frontend Dev',
     rating: 4.6,
+    ratingCount: 87,
   },
 ]
 
@@ -78,7 +83,7 @@ export default function Homepage({ onNavigate }: HomepageProps) {
         <div className="flex items-center justify-between mb-6">
           <div>
             <p className="text-slate-400 text-sm font-medium">Welcome back</p>
-            <h1 className="heading-lg mt-1">Hello, Student!</h1>
+            <h1 className="heading-lg mt-1">Hello, Jofether!</h1>
           </div>
           <button className="relative flex items-center justify-center w-12 h-12 rounded-2xl bg-slate-800 hover:bg-slate-700 transition-all border border-slate-700">
             <Bell size={22} className="text-skwap-accent" />
@@ -148,15 +153,16 @@ export default function Homepage({ onNavigate }: HomepageProps) {
           >
             {mockCategories.map((category) => (
               <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`flex-shrink-0 px-4 py-2 rounded-full font-semibold text-sm transition-all duration-200 whitespace-nowrap ${
-                  selectedCategory === category
+                key={category.name}
+                onClick={() => setSelectedCategory(category.name)}
+                className={`flex-shrink-0 px-4 py-2 rounded-full font-semibold text-sm transition-all duration-200 whitespace-nowrap flex items-center gap-2 ${
+                  selectedCategory === category.name
                     ? 'bg-skwap-accent text-slate-900 shadow-md shadow-cyan-500/50'
                     : 'bg-slate-800 text-skwap-accent hover:bg-slate-700 border border-slate-700'
                 }`}
               >
-                {category}
+                <span>{category.icon}</span>
+                <span>{category.name}</span>
               </button>
             ))}
           </div>
@@ -211,6 +217,9 @@ export default function Homepage({ onNavigate }: HomepageProps) {
                     <span className="text-yellow-500 font-semibold text-sm">★</span>
                     <span className="text-xs font-semibold text-slate-50">
                       {user.rating}
+                    </span>
+                    <span className="text-xs text-slate-400">
+                      ({user.ratingCount})
                     </span>
                   </div>
                 </div>
