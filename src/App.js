@@ -3,8 +3,9 @@ import { useState } from 'react';
 import Homepage from './pages/Homepage';
 import Credits from './pages/Credits';
 import Matching from './pages/Matching';
+import TransactionSuccess from './pages/TransactionSuccess';
 export default function App() {
-    const [currentPage, setCurrentPage] = useState('home');
+    const [currentPage, setCurrentPage] = useState('success');
     const renderPage = () => {
         switch (currentPage) {
             case 'home':
@@ -13,6 +14,8 @@ export default function App() {
                 return _jsx(Credits, { onNavigate: setCurrentPage });
             case 'matching':
                 return _jsx(Matching, { onNavigate: setCurrentPage });
+            case 'success':
+                return _jsx(TransactionSuccess, { onNavigate: setCurrentPage });
             default:
                 return _jsx(Homepage, { onNavigate: setCurrentPage });
         }

@@ -2,11 +2,12 @@ import { useState } from 'react'
 import Homepage from './pages/Homepage'
 import Credits from './pages/Credits'
 import Matching from './pages/Matching'
+import TransactionSuccess from './pages/TransactionSuccess'
 
-type PageType = 'home' | 'credits' | 'matching'
+type PageType = 'home' | 'credits' | 'matching' | 'success'
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<PageType>('home')
+  const [currentPage, setCurrentPage] = useState<PageType>('success')
 
   const renderPage = () => {
     switch (currentPage) {
@@ -16,6 +17,8 @@ export default function App() {
         return <Credits onNavigate={setCurrentPage} />
       case 'matching':
         return <Matching onNavigate={setCurrentPage} />
+      case 'success':
+        return <TransactionSuccess onNavigate={setCurrentPage} />
       default:
         return <Homepage onNavigate={setCurrentPage} />
     }
