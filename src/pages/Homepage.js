@@ -3,43 +3,40 @@ import { useState, useRef } from 'react';
 import { Bell, Search, ChevronRight, Flame } from 'lucide-react';
 const mockCategories = [
     'Programming',
+    'Academics',
     'Design',
     'Languages',
     'Music',
-    'Business',
-    'Sports',
-    'Photography',
     'Writing',
-    'Math',
-    'Art',
+    'Business',
 ];
 const mockRecommendedUsers = [
     {
         id: '1',
         name: 'Sarah Chen',
         avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah',
-        skillOffering: 'Python Programming',
+        skillOffering: 'Python & Data Processing',
         rating: 4.8,
     },
     {
         id: '2',
         name: 'Alex Rivera',
         avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex',
-        skillOffering: 'Photography Basics',
+        skillOffering: 'Information Assurance Tutoring',
         rating: 4.9,
     },
     {
         id: '3',
         name: 'Jamie Lee',
         avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jamie',
-        skillOffering: 'UI/UX Design',
+        skillOffering: 'UI/UX Thesis Help',
         rating: 4.7,
     },
     {
         id: '4',
         name: 'Marcus Johnson',
         avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus',
-        skillOffering: 'Guitar Lessons',
+        skillOffering: 'React Frontend Dev',
         rating: 4.6,
     },
 ];
