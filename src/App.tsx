@@ -1,95 +1,110 @@
-import { useState } from 'react'
-import { Home, Flame, Wallet } from 'lucide-react'
-import Homepage from './pages/Homepage'
-import Credits from './pages/Credits'
-import Matching from './pages/Matching'
-import TransactionSuccess from './pages/TransactionSuccess'
+// App.tsx
+import { useState } from "react";
+import { Home, Flame, Wallet, MessageCircle, User } from "lucide-react";
 
-type PageType = 'home' | 'credits' | 'matching' | 'success'
+// Existing Pages
+import Homepage from "./pages/Homepage";
+import Credits from "./pages/Credits";
+import Matching from "./pages/Matching";
+import TransactionSuccess from "./pages/TransactionSuccess";
+
+// Future Pages (Placeholders for now, we will replace these as we build them)
+import Auth from './pages/Auth'
+import Messages from "./pages/Messages";
+import SkillWizard from "./pages/SkillWizard";
+import Profile from "./pages/Profile";
+import Notifications from "./pages/Notifications";
+
+export type PageType =
+  | "auth"
+  | "home"
+  | "credits"
+  | "matching"
+  | "success"
+  | "messages"
+  | "wizard"
+  | "profile"
+  | "notifications"
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<PageType>('success')
+  // App now starts on the Auth page to enforce student verification
+  const [currentPage, setCurrentPage] = useState<PageType>("auth");
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'home':
-        return <Homepage onNavigate={setCurrentPage} />
-      case 'credits':
-        return <Credits onNavigate={setCurrentPage} />
-      case 'matching':
-        return <Matching onNavigate={setCurrentPage} />
-      case 'success':
-        return <TransactionSuccess onNavigate={setCurrentPage} />
+      case "home":
+        return <Homepage onNavigate={setCurrentPage} />;
+      case "credits":
+        return <Credits onNavigate={setCurrentPage} />;
+      case "matching":
+        return <Matching onNavigate={setCurrentPage} />;
+      case "success":
+        return <TransactionSuccess onNavigate={setCurrentPage} />;
+      // Placeholders for our upcoming phases
+      case "auth":
+        return <Auth onNavigate={setCurrentPage} />;
+      case "messages":
+        return <Messages onNavigate={setCurrentPage} />;
+      case "wizard":
+        return <SkillWizard onNavigate={setCurrentPage} />;
+      case "profile":
+        return <Profile onNavigate={setCurrentPage} />;
+      case "notifications":
+        return <Notifications onNavigate={setCurrentPage} />; 
       default:
-        return <Homepage onNavigate={setCurrentPage} />
+        return <Homepage onNavigate={setCurrentPage} />;
     }
-  }
+  };
+
+  // Hide navigation on pages that require 100% focus
+  const hideNavPages: PageType[] = ["auth", "wizard", "success"];
+  const showNav = !hideNavPages.includes(currentPage);
+
+  // Clean, mapped array for bottom navigation items
+  const navItems = [
+    { id: "home", label: "Home", icon: Home },
+    { id: "matching", label: "Match", icon: Flame },
+    { id: "messages", label: "Messages", icon: MessageCircle },
+    { id: "credits", label: "Credits", icon: Wallet },
+    { id: 'profile', label: 'Profile', icon: User },
+  ] as const;
 
   return (
-    <div className="min-h-screen bg-slate-900 pb-20">
+    <div className="min-h-screen pb-20 bg-slate-900">
       {renderPage()}
 
       {/* Bottom Navigation Bar */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-700 z-50">
-        <div className="flex justify-around items-center h-16 max-w-md mx-auto w-full">
-          {/* Home Button */}
-          <button
-            onClick={() => setCurrentPage('home')}
-            className="flex flex-col items-center justify-center gap-1 transition-colors duration-200"
-          >
-            <Home
-              size={24}
-              className={currentPage === 'home' ? 'text-skwap-accent' : 'text-slate-500'}
-              strokeWidth={currentPage === 'home' ? 2 : 1.5}
-            />
-            <span
-              className={`text-xs font-medium ${
-                currentPage === 'home' ? 'text-skwap-accent' : 'text-slate-500'
-              }`}
-            >
-              Home
-            </span>
-          </button>
-
-          {/* Match Button */}
-          <button
-            onClick={() => setCurrentPage('matching')}
-            className="flex flex-col items-center justify-center gap-1 transition-colors duration-200"
-          >
-            <Flame
-              size={24}
-              className={currentPage === 'matching' ? 'text-skwap-accent' : 'text-slate-500'}
-              strokeWidth={currentPage === 'matching' ? 2 : 1.5}
-            />
-            <span
-              className={`text-xs font-medium ${
-                currentPage === 'matching' ? 'text-skwap-accent' : 'text-slate-500'
-              }`}
-            >
-              Match
-            </span>
-          </button>
-
-          {/* Credits Button */}
-          <button
-            onClick={() => setCurrentPage('credits')}
-            className="flex flex-col items-center justify-center gap-1 transition-colors duration-200"
-          >
-            <Wallet
-              size={24}
-              className={currentPage === 'credits' ? 'text-skwap-accent' : 'text-slate-500'}
-              strokeWidth={currentPage === 'credits' ? 2 : 1.5}
-            />
-            <span
-              className={`text-xs font-medium ${
-                currentPage === 'credits' ? 'text-skwap-accent' : 'text-slate-500'
-              }`}
-            >
-              Credits
-            </span>
-          </button>
-        </div>
-      </nav>
+      {showNav && (
+        <nav className="fixed bottom-0 left-0 right-0 z-50 border-t bg-slate-900 border-slate-700">
+          <div className="flex items-center justify-around w-full h-16 max-w-md mx-auto">
+            {navItems.map(({ id, label, icon: Icon }) => {
+              const isActive = currentPage === id;
+              return (
+                <button
+                  key={id}
+                  onClick={() => setCurrentPage(id as PageType)}
+                  className="flex flex-col items-center justify-center gap-1 transition-colors duration-200"
+                >
+                  <Icon
+                    size={24}
+                    className={
+                      isActive ? "text-skwap-accent" : "text-slate-500"
+                    }
+                    strokeWidth={isActive ? 2 : 1.5}
+                  />
+                  <span
+                    className={`text-xs font-medium ${
+                      isActive ? "text-skwap-accent" : "text-slate-500"
+                    }`}
+                  >
+                    {label}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </nav>
+      )}
     </div>
-  )
+  );
 }
